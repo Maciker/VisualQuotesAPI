@@ -1,0 +1,22 @@
+{
+  "name": "visualquotesapi",
+  "version": "0.0.1",
+  "description": "Visual Quotes API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maciker/VisualQuotesAPI.git"
+  },
+  "author": "Iker Macaya Faber",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maciker/VisualQuotesAPI/issues"
+  },
+  "homepage": "https://github.com/Maciker/VisualQuotesAPI#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
