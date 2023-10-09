@@ -26,6 +26,16 @@ app.get('/api/quotes', (resquest, response) => {
     response.json(quotes)
 })
 
+app.get('/api/quotes/:id', (request, response) => {
+    const id = Number(request.params.id)
+    const quote = quotes.find( quote => quote.id === id)
+    if (quote) {
+        response.json(quote)
+    } else {
+        response.status(404).end()
+    }
+})
+
 const PORT = 8001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
