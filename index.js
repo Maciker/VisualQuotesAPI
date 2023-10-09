@@ -49,9 +49,25 @@ const generateId = () => {
     return (Math.max(...quotes.map(quote => quote.id)) +1)
 }
 
+const getInfoFromRequest = (request, response, value) => {
+    if (request.body[value]) {
+        return request.body[value]
+    } else {
+        return response.status(400).json({
+            error: `${value} missing`
+        })
+    }
+}
+
 app.post('/api/quotes', (request, response) => {
-    const quote = request.body
-    quote.id = generateId()
+    const quote =     {
+        id: generateId(),
+        quote: getInfoFromRequest(request, response, 'quote'),
+        author: getInfoFromRequest(request, response, 'author'),
+        visual: getInfoFromRequest(request, response, 'visual'),
+        prompt: getInfoFromRequest(request, response, 'prompt')
+    }
+
     response.json(quote)
 })
 

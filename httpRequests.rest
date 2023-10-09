@@ -6,7 +6,7 @@ Content-Type: application/json
 
     {
         "id": 111,
-        "quote": "Helo from post request",
+        "quote": "Hello from post request",
         "author": "Iker Macaya",
         "visual": "No image set",
         "prompt": "No Prompt here"
