@@ -46,7 +46,9 @@ app.delete('/api/quotes/:id', (request, response) => {
 })
 
 app.post('/api/quotes', (request, response) => {
+    const id = Math.max(...quotes.map( quote => quote.id)) + 1
     const quote = request.body
+    quote.id = id
     response.json(quote)
 })
 
