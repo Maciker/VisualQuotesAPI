@@ -36,6 +36,13 @@ app.get('/api/quotes/:id', (request, response) => {
     }
 })
 
+app.delete('/api/quotes/:id', (request, response) => {
+    const id = Number(request.params.id)
+    quotes = quotes.filter( quote => quote.id !== id)
+
+    response.status(204).end()
+})
+
 const PORT = 8001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
