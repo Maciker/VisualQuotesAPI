@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+app.use(express.json())
+
 let quotes = [
     {
         "id": 1,
@@ -41,6 +43,11 @@ app.delete('/api/quotes/:id', (request, response) => {
     quotes = quotes.filter( quote => quote.id !== id)
 
     response.status(204).end()
+})
+
+app.post('/api/quotes', (request, response) => {
+    const quote = request.body
+    response.json(quote)
 })
 
 const PORT = 8001
