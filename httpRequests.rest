@@ -1,7 +1,7 @@
 http://localhost:8001/api/quotes/2
 
 ###
-ºPOST http://localhost:8001/api/quotes
+POST http://localhost:8001/api/quotes
 Content-Type: application/json
 
     {

@@ -45,10 +45,13 @@ app.delete('/api/quotes/:id', (request, response) => {
     response.status(204).end()
 })
 
+const generateId = () => {
+    return (Math.max(...quotes.map(quote => quote.id)) +1)
+}
+
 app.post('/api/quotes', (request, response) => {
-    const id = Math.max(...quotes.map( quote => quote.id)) + 1
     const quote = request.body
-    quote.id = id
+    quote.id = generateId()
     response.json(quote)
 })
 
