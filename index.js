@@ -3,6 +3,10 @@ const app = express()
 
 app.use(express.json())
 
+const unknownEndpoint = (request, response) => {
+    response.status(404).send({ error: 'unknown endpoint' })
+}
+
 let quotes = [
     {
         "id": 1,
@@ -72,6 +76,8 @@ app.post('/api/quotes', (request, response) => {
 
     response.json(quote)
 })
+
+app.use(unknownEndpoint)
 
 const PORT = 8001
 app.listen(PORT, () => {
