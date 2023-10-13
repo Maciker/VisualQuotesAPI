@@ -68,6 +68,8 @@ app.post('/api/quotes', (request, response) => {
         prompt: getInfoFromRequest(request, response, 'prompt')
     }
 
+    quotes = quotes.concat(quote)
+
     response.json(quote)
 })
 
