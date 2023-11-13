@@ -1,7 +1,25 @@
 const express = require('express')
+const mongoose = require('mongoose').default
+require('dotenv').config()
 const morgan = require('morgan')
 const cors = require('cors')
 const app = express()
+
+mongoose.connect(process.env.MONGODB_URI)
+    .then((result) => console.log('Connected to DB'))
+    .catch((error) => console.log(error))
+
+const quoteSchema = new mongoose.Schema({
+    id: Number,
+    quoteEs: String,
+    quoteEn: String,
+    author: String,
+    prompt: String,
+    quoteImage: String,
+    promptImage: String
+})
+
+const Quote = mongoose.model('Quote', quoteSchema)
 
 app.use(cors())
 app.use(express.json())
@@ -32,8 +50,20 @@ app.get('/', (request, response) => {
     response.send('<h1>Visual Quotes API</h1>')
 })
 
+/*app.get('/add-quotes', (request, response) => {
+    const data = []
+
+    data.map( quote => {
+        quoteToAdd = new Quote(quote)
+        quoteToAdd.save().then( (result) => {
+            response.send(result)
+        }).catch( (error) => console.log(error))
+    })
+})*/
 app.get('/api/quotes', (resquest, response) => {
-    response.json(quotes)
+    Quote.find({}).then(users => {
+        response.json(users)
+    })
 })
 
 app.get('/api/quotes/:id', (request, response) => {
