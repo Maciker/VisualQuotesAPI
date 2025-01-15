@@ -1,6 +1,7 @@
 import json
 from django.core.management.base import BaseCommand
-from api.models import Quote
+from models import Quote
+
 
 class Command(BaseCommand):
     help = 'Load quotes from a JSON file into the database'
